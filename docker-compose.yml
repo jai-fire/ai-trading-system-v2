@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Main Trading Application
+  trading-app:
+    build: .
+    container_name: ai-trading-system
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./config.yaml:/app/config.yaml
+    ports:
+      - "8501:8501"  # Streamlit dashboard
+      - "8000:8000"  # API (if implemented)
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+    depends_on:
+      - ollama
+    networks:
+      - trading-network
+    command: streamlit run ui/dashboard.py --server.port=8501 --server.address=0.0.0.0
+
+  # Ollama LLM Service
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-llm
+    volumes:
+      - ollama-data:/root/.ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - trading-network
+    restart: unless-stopped
+
+volumes:
+  ollama-data:
+
+networks:
+  trading-network:
+    driver: bridge
