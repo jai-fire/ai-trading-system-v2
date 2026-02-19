@@ -1,0 +1,47 @@
+# Core Dependencies
+python-binance==1.0.19
+ccxt==4.2.25
+pandas==2.1.4
+numpy==1.26.3
+
+# Machine Learning
+torch==2.1.2
+scikit-learn==1.4.0
+
+# Technical Indicators
+ta-lib==0.4.28
+pandas-ta==0.3.14b
+
+# LLM Integration
+openai==1.10.0
+anthropicsdk==0.18.1
+cohere==4.47
+
+# Data Storage
+sqlite3  # Built-in
+pickle5==0.0.12
+
+# Web Dashboard
+dash==2.14.2
+dash-bootstrap-components==1.5.0
+plotly==5.18.0
+
+# Configuration
+pyyaml==6.0.1
+python-dotenv==1.0.0
+
+# Logging & Monitoring
+loguru==0.7.2
+
+# Utilities
+requests==2.31.0
+python-dateutil==2.8.2
+typer==0.9.0
+rich==13.7.0
+
+# Testing (Optional)
+pytest==7.4.4
+pytest-cov==4.1.0
+
+# Docker (Optional)
+gunicorn==21.2.0
